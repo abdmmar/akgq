@@ -2,29 +2,34 @@ import styled from 'styled-components'
 
 const Main = styled.main`
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 2rem;
+  background-color: #e9e5dc;
+`
+
+const Container = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: calc(100vh - 64px);
 `
 
-const Footer = styled.footer`
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+const H1 = styled.h1`
+  font-size: clamp(2rem, 16vw - 5rem, 5rem);
 `
 
 const ComingSoon = () => {
   return (
     <div>
-      <Main>Testing</Main>
-
-      <Footer></Footer>
+      <Main>
+        <Container>
+          <H1>Coming Soon</H1>
+          <p>
+            <strong>Akyas x GenQ</strong> Special Edition: Reunion
+          </p>
+        </Container>
+      </Main>
     </div>
   )
 }
