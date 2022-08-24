@@ -22,7 +22,7 @@ const Footer = styled.footer`
 const ComingSoon = () => {
   return (
     <div>
-      <Main>Test</Main>
+      <Main>Testing</Main>
 
       <Footer></Footer>
     </div>
