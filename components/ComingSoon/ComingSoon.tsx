@@ -28,8 +28,6 @@ const ComingSoon = () => {
           src="/bg.png"
           alt="Gallery of Islah 21 Reuni"
           layout="fill"
-          width={1280}
-          height={720}
           objectFit="cover"
           quality={100}
         />
