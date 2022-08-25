@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Image from 'next/image'
+import NextImage from 'next/image'
 import styled from 'styled-components'
 import { useWindowSize } from '../../hooks/useWindowSize'
 
@@ -16,6 +16,12 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: calc(100vh - 64px);
+  position: relative;
+  z-index: 2;
+`
+
+const Image = styled(NextImage)`
+  z-index: 0;
 `
 
 const H1 = styled.h1`
