@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
 const Main = styled.main`
   min-height: 100vh;
   padding: 2rem;
-  background-color: #e9e5dc;
+  background-color: #ffffff;
 `
 
 const Container = styled.div`
@@ -23,6 +24,15 @@ const ComingSoon = () => {
   return (
     <div>
       <Main>
+        <Image
+          src="/bg.png"
+          alt="Gallery of Islah 21 Reuni"
+          layout="fill"
+          width={1280}
+          height={720}
+          objectFit="cover"
+          quality={100}
+        />
         <Container>
           <H1>Coming Soon</H1>
           <p>
