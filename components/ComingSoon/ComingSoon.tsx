@@ -7,6 +7,10 @@ const Main = styled.main`
   min-height: 100vh;
   padding: 2rem;
   background-color: #ffffff;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #090907;
+  }
 `
 
 const Container = styled.div`
