@@ -25,7 +25,7 @@ const Image = styled(NextImage)`
 `
 
 const H1 = styled.h1`
-  font-size: clamp(2rem, 16vw - 6rem, 6rem);
+  font-size: clamp(3rem, 16vw - 6rem, 6rem);
 `
 
 const ComingSoon = () => {
