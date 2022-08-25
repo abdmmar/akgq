@@ -1,5 +1,7 @@
+import * as React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
+import { useWindowSize } from '../../hooks/useWindowSize'
 
 const Main = styled.main`
   min-height: 100vh;
@@ -17,15 +19,22 @@ const Container = styled.div`
 `
 
 const H1 = styled.h1`
-  font-size: clamp(2rem, 16vw - 5rem, 5rem);
+  font-size: clamp(2rem, 16vw - 6rem, 6rem);
 `
 
 const ComingSoon = () => {
+  const size = useWindowSize()
+
+  const src = React.useMemo(
+    () => (size.width && size.width <= 480 ? '/bg-mobile.png' : '/bg.png'),
+    [size.width],
+  )
+
   return (
     <div>
       <Main>
         <Image
-          src="/bg.png"
+          src={src || '/bg.png'}
           alt="Gallery of Islah 21 Reuni"
           layout="fill"
           objectFit="cover"
