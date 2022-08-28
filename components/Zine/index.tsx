@@ -3,6 +3,7 @@ import BehindTheScene from './BehindTheScene'
 import Cover from './Cover'
 import DisiniKitaBerjumpa from './DisiniKitaBerjumpa'
 import Editorial from './Editorial'
+import Epilog from './Epilog'
 import PhotoDump from './PhotoDump'
 import SemogaKitaBerjumpa from './SemogaKitaBerjumpa'
 import SharingSession from './SharingSession'
@@ -20,6 +21,7 @@ const Zine = () => {
       <DisiniKitaBerjumpa />
       <PhotoDump />
       <AKGQGallery />
+      <Epilog />
     </main>
   )
 }
