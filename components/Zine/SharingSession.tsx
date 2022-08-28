@@ -106,6 +106,7 @@ const SharingCardContent = (props: SharingCardContentProps) => {
 
 const CardContainer = styled.div<{ bgColor?: string; textColor?: string; reverse?: boolean }>`
   display: grid;
+  min-height: 340px;
   grid-template-columns: ${(props) => (props.reverse ? '60% 40% ' : '40% 60%')};
   background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.white)};
   color: ${(props) => (props.bgColor ? props.textColor : props.theme.colors.midnight)};
