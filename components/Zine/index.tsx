@@ -1,5 +1,6 @@
 import BehindTheScene from './BehindTheScene'
 import Cover from './Cover'
+import DisiniKitaBerjumpa from './DisiniKitaBerjumpa'
 import Editorial from './Editorial'
 import SemogaKitaBerjumpa from './SemogaKitaBerjumpa'
 import SharingSession from './SharingSession'
@@ -14,6 +15,7 @@ const Zine = () => {
       <BehindTheScene />
       <SemogaKitaBerjumpa />
       <SharingSession />
+      <DisiniKitaBerjumpa />
     </main>
   )
 }
