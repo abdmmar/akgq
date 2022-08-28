@@ -249,12 +249,17 @@ const scroll = keyframes`
   }
   `
 
+/**
+ * Source:
+ * - https://codepen.io/hexagoncircle/pen/wvmjomb
+ * - https://ryanmulligan.dev/blog/css-marquee/
+ */
 const CardWrapper = styled.ul<{ reverse?: boolean; isMobile?: boolean }>`
   padding: 0;
   display: flex;
   flex-shrink: 0;
   justify-content: space-around;
-  animation: ${scroll} ${(props) => (props.isMobile ? '30s' : '60s')} linear infinite;
+  animation: ${scroll} ${(props) => (props.isMobile ? '30s' : '45s')} linear infinite;
   animation-direction: ${(props) => (props.reverse ? 'reverse' : '')};
 `
 
