@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled, { css, keyframes, useTheme } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { colors } from '../../styles/theme'
 
@@ -160,11 +160,10 @@ const shoutOutCardVariants = (index: number): CardVariant => {
 
 const ShoutOut = () => {
   const windowSize = useWindowSize()
+  const isMobile = windowSize.width && windowSize.width <= 420 ? true : false
   const rowSize = windowSize.width ? Math.round(windowSize?.width / 215) : 7
-  const data = React.useMemo(
-    () => mapToShoutOutCard(shoutoutsData, rowSize < 4 ? 4 : rowSize),
-    [rowSize],
-  )
+  const rowItemSize = rowSize < 4 ? 4 : rowSize
+  const data = React.useMemo(() => mapToShoutOutCard(shoutoutsData, rowItemSize), [rowItemSize])
 
   return (
     <Container>
@@ -176,7 +175,7 @@ const ShoutOut = () => {
           {data.map((shoutouts, i) => {
             return (
               <CardContainer key={i}>
-                <CardWrapper reverse={i % 2 === 0}>
+                <CardWrapper reverse={i % 2 === 0} isMobile={isMobile}>
                   {shoutouts.map((shoutout, j) => {
                     const variant = shoutOutCardVariants(j)
                     return (
@@ -190,7 +189,7 @@ const ShoutOut = () => {
                     )
                   })}
                 </CardWrapper>
-                <CardWrapper aria-hidden="true" reverse={i % 2 === 0}>
+                <CardWrapper aria-hidden="true" reverse={i % 2 === 0} isMobile={isMobile}>
                   {shoutouts.map((shoutout, j) => {
                     const variant = shoutOutCardVariants(j)
                     return (
@@ -250,11 +249,12 @@ const scroll = keyframes`
   }
   `
 
-const CardWrapper = styled.div<{ reverse?: boolean }>`
+const CardWrapper = styled.ul<{ reverse?: boolean; isMobile?: boolean }>`
+  padding: 0;
   display: flex;
   flex-shrink: 0;
   justify-content: space-around;
-  animation: ${scroll} 35s linear infinite;
+  animation: ${scroll} ${(props) => (props.isMobile ? '30s' : '60s')} linear infinite;
   animation-direction: ${(props) => (props.reverse ? 'reverse' : '')};
 `
 
@@ -287,7 +287,7 @@ const ShoutOutCard = (props: ShoutOutCardProps) => {
   )
 }
 
-const Card = styled.div<{ bgColor?: string }>`
+const Card = styled.li<{ bgColor?: string }>`
   padding: 0.5rem;
   background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.white)};
   display: flex;
