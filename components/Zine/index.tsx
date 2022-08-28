@@ -1,6 +1,8 @@
-import BehindTheScene from './BehingTheScene'
+import BehindTheScene from './BehindTheScene'
 import Cover from './Cover'
 import Editorial from './Editorial'
+import SemogaKitaBerjumpa from './SemogaKitaBerjumpa'
+import SharingSession from './SharingSession'
 import ShoutOut from './ShoutOut'
 
 const Zine = () => {
@@ -10,6 +12,8 @@ const Zine = () => {
       <Editorial />
       <ShoutOut />
       <BehindTheScene />
+      <SemogaKitaBerjumpa />
+      <SharingSession />
     </main>
   )
 }

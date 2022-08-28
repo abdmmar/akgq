@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { colors } from './theme'
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -54,7 +55,7 @@ const GlobalStyles = createGlobalStyle`
     background: white;
     font-weight: 500;
     line-height: 1.5;
-    color: #090907;
+    color: ${colors.midnight};
   }
 
   h1, h2, h3, h4, h5 {

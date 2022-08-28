@@ -105,17 +105,18 @@ const mapToShoutOutCard = (data: Array<ShoutOutData>, size: number) => {
   // Duplicate row item to match size
   const rowLen = row.length
   if (rowLen < size) {
-    const remainder = size - rowLen
     let addIndex = 0
 
-    for (let i = remainder + 1; i < size; i++) {
+    for (let i = rowLen + 1; i < size; i++) {
       if (addIndex > rowLen) {
         addIndex = 0
       }
 
       const item = row[addIndex]
-      row.push(item)
-      addIndex++
+      if (item) {
+        row.push(item)
+        addIndex++
+      }
     }
   }
 

@@ -1,4 +1,5 @@
 import styled, { useTheme } from 'styled-components'
+import _Container from '../Common/Container'
 
 const Editorial = () => {
   const theme = useTheme()
@@ -88,11 +89,7 @@ const Editorial = () => {
   )
 }
 
-const Container = styled.div`
-  min-height: 100vh;
-  padding: 100px 150px;
-  display: flex;
-  align-items: center;
+const Container = styled(_Container)`
   background-color: ${(props) => props.theme.colors.midnight};
   color: ${(props) => props.theme.colors.cream};
 `

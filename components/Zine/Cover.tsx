@@ -1,6 +1,8 @@
 import styled, { useTheme } from 'styled-components'
 import NextImage from 'next/image'
 
+import Container from '../Common/Container'
+
 const Cover = () => {
   const theme = useTheme()
 
@@ -52,13 +54,6 @@ const Cover = () => {
     </Container>
   )
 }
-
-const Container = styled.div`
-  min-height: 100vh;
-  padding: 100px 150px;
-  display: flex;
-  align-items: center;
-`
 
 const Wrapper = styled.div`
   display: flex;
