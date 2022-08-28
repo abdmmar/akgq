@@ -1,3 +1,4 @@
+import AKGQGallery from './AKGQGallery'
 import BehindTheScene from './BehindTheScene'
 import Cover from './Cover'
 import DisiniKitaBerjumpa from './DisiniKitaBerjumpa'
@@ -18,6 +19,7 @@ const Zine = () => {
       <SharingSession />
       <DisiniKitaBerjumpa />
       <PhotoDump />
+      <AKGQGallery />
     </main>
   )
 }
