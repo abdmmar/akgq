@@ -1,16 +1,9 @@
 // import original module declarations
 import 'styled-components'
+import { Theme } from './styles/theme.types'
 
 // and extend them!
 declare module 'styled-components' {
-  export interface DefaultTheme {
-    colors: {
-      midnight: string
-      torchRed: string
-      cream: string
-      white: string
-      black: string
-      yogyaBlue: string
-    }
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends Theme {}
 }
