@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body {
     height: 100%;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', 'Roboto', 'Helvetica', sans-serif;
   }
 
   body {  
@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
   }
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
-    font-family: 'IBM Plex Sans', 'Roboto', sans-serif;
+    font-family: 'Inter', 'Roboto', 'Helvetica', sans-serif;
   }
   #root, #__next {
     isolation: isolate;
@@ -52,16 +52,13 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background: white;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.5;
-    /* color: hsla(225, 15%, 17%, 1); */
     color: #090907;
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.3;
   }
 
