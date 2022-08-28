@@ -175,7 +175,7 @@ const ShoutOut = () => {
           {data.map((shoutouts, i) => {
             return (
               <CardContainer key={i}>
-                <CardWrapper reverse={i % 2 === 0} isMobile={isMobile}>
+                <CardWrapper reverse={i % 2 === 0} isMobile={isMobile || rowSize <= 4}>
                   {shoutouts.map((shoutout, j) => {
                     const variant = shoutOutCardVariants(j)
                     return (
@@ -189,7 +189,11 @@ const ShoutOut = () => {
                     )
                   })}
                 </CardWrapper>
-                <CardWrapper aria-hidden="true" reverse={i % 2 === 0} isMobile={isMobile}>
+                <CardWrapper
+                  aria-hidden="true"
+                  reverse={i % 2 === 0}
+                  isMobile={isMobile || rowSize <= 4}
+                >
                   {shoutouts.map((shoutout, j) => {
                     const variant = shoutOutCardVariants(j)
                     return (
