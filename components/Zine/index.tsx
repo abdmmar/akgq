@@ -1,3 +1,4 @@
+import BehindTheScene from './BehingTheScene'
 import Cover from './Cover'
 import Editorial from './Editorial'
 import ShoutOut from './ShoutOut'
@@ -8,6 +9,7 @@ const Zine = () => {
       <Cover />
       <Editorial />
       <ShoutOut />
+      <BehindTheScene />
     </main>
   )
 }
