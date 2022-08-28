@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { ComingSoon } from '../components'
+import { Zine } from '../components'
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/akgq.ico" />
       </Head>
 
-      <ComingSoon />
+      <Zine />
     </div>
   )
 }
