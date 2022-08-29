@@ -1,9 +1,20 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
 import { Zine } from '../components'
+import readCSV from '../utils/readCSV'
 
-const Home: NextPage = () => {
+interface ShoutOut {
+  name: string
+  message: string
+  doing?: string
+}
+
+interface Props {
+  data: Array<ShoutOut>
+}
+
+const Home: NextPage<Props> = ({ data }) => {
   return (
     <div>
       <Head>
@@ -15,6 +26,16 @@ const Home: NextPage = () => {
       <Zine />
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const records: Array<ShoutOut> = readCSV({ filePath: './data/shoutout_nuzhat.csv' })
+
+  return {
+    props: {
+      data: records,
+    },
+  }
 }
 
 export default Home

@@ -5,7 +5,7 @@ import DisiniKitaBerjumpa from './DisiniKitaBerjumpa'
 import Editorial from './Editorial'
 import Epilog from './Epilog'
 import PhotoDump from './PhotoDump'
-import SemogaKitaBerjumpa from './SemogaKitaBerjumpa'
+import SemogaKitaBerjumpa from './CeritaDong'
 import SharingSession from './SharingSession'
 import ShoutOut from './ShoutOut'
 

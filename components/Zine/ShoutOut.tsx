@@ -5,81 +5,84 @@ import { colors } from '../../styles/theme'
 
 interface ShoutOutData {
   message: string
-  author: string
+  name: string
+  doing?: string
 }
 
 const shoutoutsData: Array<ShoutOutData> = [
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Hanin',
+    name: 'Hanin',
+    doing: 'Nyari jodoh',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Dulon',
+    name: 'Dulon',
+    doing: 'Nyari jodoh',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Fathan',
+    name: 'Fathan',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Maiz',
+    name: 'Maiz',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Jampres',
+    name: 'Jampres',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Tahani',
+    name: 'Tahani',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Damcin',
+    name: 'Damcin',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Dinda',
+    name: 'Dinda',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Jijeh',
+    name: 'Jijeh',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Hanin',
+    name: 'Hanin',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Dulon',
+    name: 'Dulon',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Fathan',
+    name: 'Fathan',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Maiz',
+    name: 'Maiz',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Jampres',
+    name: 'Jampres',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Tahani',
+    name: 'Tahani',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Damcin',
+    name: 'Damcin',
   },
   {
     message: 'Lorem ipsum dolor sit amet',
-    author: 'Dinda',
+    name: 'Dinda',
   },
   {
     message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    author: 'Jijeh',
+    name: 'Jijeh',
   },
 ]
 
@@ -181,9 +184,9 @@ const ShoutOut = () => {
                     const variant = shoutOutCardVariants(j)
                     return (
                       <ShoutOutCard
-                        key={`${j}+${shoutout.author}`}
+                        key={`${j}+${shoutout.name}`}
                         text={shoutout.message}
-                        author={shoutout.author}
+                        name={shoutout.name}
                         bgColor={variant.bgColor}
                         textColor={variant.textColor}
                       />
@@ -199,9 +202,9 @@ const ShoutOut = () => {
                     const variant = shoutOutCardVariants(j)
                     return (
                       <ShoutOutCard
-                        key={`${j}+${shoutout.author}`}
+                        key={`${j}+${shoutout.name}`}
                         text={shoutout.message}
-                        author={shoutout.author}
+                        name={shoutout.name}
                         bgColor={variant.bgColor}
                         textColor={variant.textColor}
                       />
@@ -281,7 +284,8 @@ const CardContainer = styled.div`
 
 interface ShoutOutCardProps {
   text: string
-  author: string
+  name: string
+  doing?: string
   textColor?: string
   bgColor?: string
 }
@@ -291,7 +295,8 @@ const ShoutOutCard = (props: ShoutOutCardProps) => {
     <Card bgColor={props.bgColor}>
       <CardText color={props.textColor}>{props.text}</CardText>
       <CardText color={props.textColor} opacity={0.8}>
-        {props.author}
+        {props.name}
+        {props.doing ? ` • ${props.doing}` : null}
       </CardText>
     </Card>
   )
