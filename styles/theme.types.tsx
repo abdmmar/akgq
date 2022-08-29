@@ -7,6 +7,8 @@ export type Colors = {
   yogyaBlue: string
 }
 
+export type Color = keyof Colors
+
 export interface Theme {
   colors: Colors
 }
