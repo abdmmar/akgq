@@ -111,9 +111,6 @@ const ShoutOut = () => {
     [data, rowItemSize],
   )
 
-  if (isValidating) return <p>Loading...</p>
-  if (!data) return <p>Ga ada Shout Out</p>
-
   return (
     <Container>
       <Wrapper>
@@ -121,7 +118,8 @@ const ShoutOut = () => {
           <H2>Shout Out</H2>
         </Header>
         <Content>
-          {shoutoutData
+          {isValidating ? <p>Bentar yak, beli cilok dulu</p> : null}
+          {!isValidating && shoutoutData.length > 0
             ? shoutoutData.map((shoutouts, i) => {
                 return (
                   <CardContainer key={i}>
@@ -170,7 +168,6 @@ const ShoutOut = () => {
 }
 
 const Container = styled.div`
-  min-height: 100vh;
   display: flex;
   background-color: ${(props) => props.theme.colors.cream};
   color: ${(props) => props.theme.colors.midnight};

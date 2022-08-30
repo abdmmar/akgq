@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import path from 'path'
 import { ShoutOutData } from '../../components/Zine/ShoutOut'
 import readCSV from '../../utils/readCSV'
 
@@ -6,8 +7,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ data?: Array<ShoutOutData>; error?: string }>,
 ) {
-  const recordsNuzhat: Array<ShoutOutData> = readCSV({ filePath: './data/shoutout_nuzhat.csv' })
-  const recordsStrg: Array<ShoutOutData> = readCSV({ filePath: './data/shoutout_strg.csv' })
+  const dataDir = path.join(process.cwd(), 'data')
+  const recordsNuzhat: Array<ShoutOutData> = readCSV({
+    filePath: path.join(dataDir, 'shoutout_nuzhat.csv'),
+  })
+  const recordsStrg: Array<ShoutOutData> = readCSV({
+    filePath: path.join(dataDir, 'shoutout_strg.csv'),
+  })
   const records = []
   const recordsLen =
     recordsStrg.length >= recordsNuzhat.length ? recordsStrg.length : recordsNuzhat.length
