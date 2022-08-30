@@ -33,20 +33,20 @@ const Cover = () => {
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-arrow-down"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke={theme.colors.yogyaBlue}
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              width={32}
+              height={32}
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 16 16"
+              style={{
+                transform: 'rotate(360deg)',
+              }}
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="18" y1="13" x2="12" y2="19"></line>
-              <line x1="6" y1="13" x2="12" y2="19"></line>
+              <path
+                fill={theme.colors.yogyaBlue}
+                fillRule="evenodd"
+                d="m3.147 9l5 5h.707l5-5l-.707-.707L9 12.439V2H8v10.44L3.854 8.292L3.147 9z"
+                clipRule="evenodd"
+              />
             </svg>
           </div>
         </Content>
