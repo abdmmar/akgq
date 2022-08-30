@@ -94,9 +94,17 @@ const ShoutOut = () => {
   const rowSize = windowSize.width ? Math.round(windowSize?.width / 215) : 7
   const rowItemSize = rowSize < 4 ? 4 : rowSize
 
-  const { data, isValidating } = useSWR<{ data: Array<ShoutOutData> }>('/api/shoutout', (url) => {
-    return fetch(url).then((res) => res.json())
-  })
+  const { data, isValidating } = useSWR<{ data: Array<ShoutOutData> }>(
+    '/api/shoutout',
+    (url) => {
+      return fetch(url).then((res) => res.json())
+    },
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    },
+  )
 
   const shoutoutData = React.useMemo(
     () => (data ? mapToShoutOutCard(data.data, rowItemSize) : []),
