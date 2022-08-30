@@ -17,7 +17,7 @@ export interface Props {
   children: React.ReactNode
 }
 
-const ResponsiveImage = (props: any) => <Image alt={props.alt} layout="responsive" {...props} />
+// const ResponsiveImage = (props: any) => <Image alt={props.alt} layout="fill" {...props} />
 
 const H1 = styled.h1`
   font-size: clamp(3rem, 16vw - 4rem, 4rem);
@@ -38,7 +38,7 @@ const Text = styled(_Text)`
 `
 
 export const mdxComponents = {
-  img: ResponsiveImage,
+  // img: ResponsiveImage,
   p: Text,
   h1: H1,
   h2: H2,

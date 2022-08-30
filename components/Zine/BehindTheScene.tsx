@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import NextImage from 'next/image'
 import Container from '../Common/Container'
+import Link from 'next/link'
 
 const BehindTheScene = () => {
   return (
@@ -19,10 +20,14 @@ const BehindTheScene = () => {
               labore et dolore magna aliqua. Ut enim ad minim veniam,
             </Text>
           </div>
-          <Button>Read More</Button>
+          <Link href="/bts">
+            <a>
+              <Button>Read More</Button>
+            </a>
+          </Link>
         </Content>
         <NextImage
-          src="/akgq-peace.jpg"
+          src="/images/akgq-peace.jpg"
           width={470}
           height={700}
           objectFit="cover"
@@ -60,7 +65,7 @@ const Text = styled.p<{ color?: string }>`
   color: ${(props) => props.color || props.theme.colors.yogyaBlue};
 `
 
-const Button = styled.button`
+const Button = styled.div`
   border: 0;
   width: fit-content;
   padding: 10px 15px;

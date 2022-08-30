@@ -10,7 +10,7 @@ const Cover = () => {
     <Container>
       <Wrapper>
         <NextImage
-          src="/cover.jpeg"
+          src="/images/cover.jpeg"
           width={545}
           height={640}
           objectFit="cover"

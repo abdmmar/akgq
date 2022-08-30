@@ -1,5 +1,6 @@
 import styled, { useTheme } from 'styled-components'
 import NextImage from 'next/image'
+import Link from 'next/link'
 
 const SharingSession = () => {
   const theme = useTheme()
@@ -10,6 +11,7 @@ const SharingSession = () => {
         <SharingCard
           bgColor={theme.colors.cream}
           textColor={theme.colors.torchRed}
+          href="/cerita-wapjeh"
           author="Oleh: Dinda Qatrunnada"
           title="Cerita Wapjeh: Membangun Bisnis Olshop dari Nol"
           summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -18,6 +20,7 @@ const SharingSession = () => {
         <SharingCard
           bgColor={theme.colors.yogyaBlue}
           textColor={theme.colors.white}
+          href="/cerita-oik"
           author="Oleh: Azizah Qalbi"
           title="Cerita Oik: Cara Menjadi DevOps Engineer"
           summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -27,6 +30,7 @@ const SharingSession = () => {
         <SharingCard
           bgColor={theme.colors.white}
           textColor={theme.colors.midnight}
+          href="/cerita-jidan"
           author="Oleh: Abdulah Azzam"
           title="Cerita Zidan: Menjadi Guru"
           summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -55,33 +59,38 @@ interface SharingCardProps {
   title: string
   author: string
   summary: string
+  href?: string
 }
 
 const SharingCard = (props: SharingCardProps) => {
   return (
-    <CardContainer bgColor={props.bgColor} textColor={props.textColor} reverse={props.reverse}>
-      {props.reverse ? (
-        <>
-          <SharingCardContent
-            author={props.author}
-            title={props.title}
-            summary={props.summary}
-            reverse={props.reverse}
-          />
-          <NextImage src="/akgq-peace.jpg" height={440} width={750} objectFit="cover" />
-        </>
-      ) : (
-        <>
-          <NextImage src="/akgq-peace.jpg" height={440} width={750} objectFit="cover" />
-          <SharingCardContent
-            author={props.author}
-            title={props.title}
-            summary={props.summary}
-            reverse={props.reverse}
-          />
-        </>
-      )}
-    </CardContainer>
+    <Link href={props.href || '/'}>
+      <a>
+        <CardContainer bgColor={props.bgColor} textColor={props.textColor} reverse={props.reverse}>
+          {props.reverse ? (
+            <>
+              <SharingCardContent
+                author={props.author}
+                title={props.title}
+                summary={props.summary}
+                reverse={props.reverse}
+              />
+              <NextImage src="/images/akgq-peace.jpg" height={440} width={750} objectFit="cover" />
+            </>
+          ) : (
+            <>
+              <NextImage src="/images/akgq-peace.jpg" height={440} width={750} objectFit="cover" />
+              <SharingCardContent
+                author={props.author}
+                title={props.title}
+                summary={props.summary}
+                reverse={props.reverse}
+              />
+            </>
+          )}
+        </CardContainer>
+      </a>
+    </Link>
   )
 }
 
