@@ -12,8 +12,10 @@ const readCSV = ({ filePath }: Props) => {
     delimiter: '=>',
     columns: headers,
   }
+  const result = parse(fileContent, options)
+  result.splice(0, 1) // Remove headers value
 
-  return parse(fileContent, options)
+  return result
 }
 
 export default readCSV

@@ -1,92 +1,18 @@
 import * as React from 'react'
 import styled, { keyframes } from 'styled-components'
+import useSWR from 'swr'
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { colors } from '../../styles/theme'
 
-interface ShoutOutData {
+export interface ShoutOutData {
   message: string
   name: string
   doing?: string
 }
 
-const shoutoutsData: Array<ShoutOutData> = [
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Hanin',
-    doing: 'Nyari jodoh',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Dulon',
-    doing: 'Nyari jodoh',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Fathan',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Maiz',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Jampres',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Tahani',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Damcin',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Dinda',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Jijeh',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Hanin',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Dulon',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Fathan',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Maiz',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Jampres',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Tahani',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Damcin',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet',
-    name: 'Dinda',
-  },
-  {
-    message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do',
-    name: 'Jijeh',
-  },
-]
-
 const mapToShoutOutCard = (data: Array<ShoutOutData>, size: number) => {
+  if (data.length === 0) return []
+
   const cards: Array<Array<ShoutOutData>> = []
   let row: Array<ShoutOutData> = []
   let count = 0
@@ -167,7 +93,18 @@ const ShoutOut = () => {
   const isMobile = windowSize.width && windowSize.width <= 420 ? true : false
   const rowSize = windowSize.width ? Math.round(windowSize?.width / 215) : 7
   const rowItemSize = rowSize < 4 ? 4 : rowSize
-  const data = React.useMemo(() => mapToShoutOutCard(shoutoutsData, rowItemSize), [rowItemSize])
+
+  const { data, isValidating } = useSWR<{ data: Array<ShoutOutData> }>('/api/shoutout', (url) => {
+    return fetch(url).then((res) => res.json())
+  })
+
+  const shoutoutData = React.useMemo(
+    () => (data ? mapToShoutOutCard(data.data, rowItemSize) : []),
+    [data, rowItemSize],
+  )
+
+  if (isValidating) return <p>Loading...</p>
+  if (!data) return <p>Ga ada Shout Out</p>
 
   return (
     <Container>
@@ -176,44 +113,48 @@ const ShoutOut = () => {
           <H2>Shout Out</H2>
         </Header>
         <Content>
-          {data.map((shoutouts, i) => {
-            return (
-              <CardContainer key={i}>
-                <CardWrapper reverse={i % 2 === 0} isMobile={isMobile || rowSize <= 4}>
-                  {shoutouts.map((shoutout, j) => {
-                    const variant = shoutOutCardVariants(j)
-                    return (
-                      <ShoutOutCard
-                        key={`${j}+${shoutout.name}`}
-                        text={shoutout.message}
-                        name={shoutout.name}
-                        bgColor={variant.bgColor}
-                        textColor={variant.textColor}
-                      />
-                    )
-                  })}
-                </CardWrapper>
-                <CardWrapper
-                  aria-hidden="true"
-                  reverse={i % 2 === 0}
-                  isMobile={isMobile || rowSize <= 4}
-                >
-                  {shoutouts.map((shoutout, j) => {
-                    const variant = shoutOutCardVariants(j)
-                    return (
-                      <ShoutOutCard
-                        key={`${j}+${shoutout.name}`}
-                        text={shoutout.message}
-                        name={shoutout.name}
-                        bgColor={variant.bgColor}
-                        textColor={variant.textColor}
-                      />
-                    )
-                  })}
-                </CardWrapper>
-              </CardContainer>
-            )
-          })}
+          {shoutoutData
+            ? shoutoutData.map((shoutouts, i) => {
+                return (
+                  <CardContainer key={i}>
+                    <CardWrapper reverse={i % 2 === 0} isMobile={isMobile || rowSize <= 4}>
+                      {shoutouts.map((shoutout, j) => {
+                        const variant = shoutOutCardVariants(j)
+                        return (
+                          <ShoutOutCard
+                            key={`${j}+${shoutout.name}`}
+                            text={shoutout.message}
+                            name={shoutout.name}
+                            doing={shoutout.doing}
+                            bgColor={variant.bgColor}
+                            textColor={variant.textColor}
+                          />
+                        )
+                      })}
+                    </CardWrapper>
+                    <CardWrapper
+                      aria-hidden="true"
+                      reverse={i % 2 === 0}
+                      isMobile={isMobile || rowSize <= 4}
+                    >
+                      {shoutouts.map((shoutout, j) => {
+                        const variant = shoutOutCardVariants(j)
+                        return (
+                          <ShoutOutCard
+                            key={`${j}+${shoutout.name}`}
+                            text={shoutout.message}
+                            name={shoutout.name}
+                            doing={shoutout.doing}
+                            bgColor={variant.bgColor}
+                            textColor={variant.textColor}
+                          />
+                        )
+                      })}
+                    </CardWrapper>
+                  </CardContainer>
+                )
+              })
+            : null}
         </Content>
       </Wrapper>
     </Container>
