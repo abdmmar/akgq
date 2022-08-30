@@ -8,6 +8,7 @@ import PhotoDump from './PhotoDump'
 import SemogaKitaBerjumpa from './CeritaDong'
 import SharingSession from './SharingSession'
 import ShoutOut from './ShoutOut'
+import SpotifyPlaylist from './SpotifyPlaylist'
 
 const Zine = () => {
   return (
@@ -22,6 +23,7 @@ const Zine = () => {
       <PhotoDump />
       <AKGQGallery />
       <Epilog />
+      <SpotifyPlaylist />
     </main>
   )
 }
