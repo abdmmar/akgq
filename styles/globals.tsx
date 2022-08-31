@@ -77,17 +77,6 @@ const GlobalStyles = createGlobalStyle`
   h5 {font-size: 1.25rem;}
 
   small, .text_small {font-size: 0.8rem;}
-  
-  @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
-    }
-    body {
-      color: white;
-      background: #090907;
-    }
-  }
-
 `
 
 export default GlobalStyles
