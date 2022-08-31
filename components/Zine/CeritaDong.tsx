@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import { colors } from '../../styles/theme'
 import _Container from '../Common/Container'
@@ -26,11 +27,15 @@ const CeritaDongKack = () => {
               </Text>
               <Text>Mahasiswa Turki Semester Akhir yang Bucin Nggak Ketolong</Text>
             </CeritaDongContent>
-            <CircleButton bgColor={colors.cream} textColor={colors.torchRed}>
-              <Text weight="700" color="torchRed" margin="0" size="14px">
-                Read More
-              </Text>
-            </CircleButton>
+            <Link href="/cerita-dil">
+              <a>
+                <CircleButton bgColor={colors.cream} textColor={colors.torchRed}>
+                  <Text weight="700" color="torchRed" margin="0" size="14px">
+                    Read More
+                  </Text>
+                </CircleButton>
+              </a>
+            </Link>
           </CeritaDongWrapper>
           <CeritaDongWrapper>
             <CeritaDongContent>
@@ -44,13 +49,17 @@ const CeritaDongKack = () => {
               >
                 Dari: Anonim Asal P**de****g
               </Text>
-              <Text>Korban PHP Dosen Pembimbing :&apos;(</Text>
+              <Text>Korban PHP Dosbing :&apos;(</Text>
             </CeritaDongContent>
-            <CircleButton bgColor={colors.yogyaBlue} textColor={colors.cream}>
-              <Text weight="700" color="cream" margin="0" size="14px">
-                Read More
-              </Text>
-            </CircleButton>
+            <Link href="/cerita-anonim">
+              <a>
+                <CircleButton bgColor={colors.yogyaBlue} textColor={colors.cream}>
+                  <Text weight="700" color="cream" margin="0" size="14px">
+                    Read More
+                  </Text>
+                </CircleButton>
+              </a>
+            </Link>
           </CeritaDongWrapper>
         </Content>
       </Wrapper>
