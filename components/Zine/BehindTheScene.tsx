@@ -10,9 +10,13 @@ const BehindTheScene = () => {
         <Content>
           <div>
             <Text>Oleh: Nadia Tahani</Text>
-            <H2>
-              Behind <br /> The Scene
-            </H2>
+            <Link href="/bts">
+              <a>
+                <H2>
+                  Behind <br /> The Scene
+                </H2>
+              </a>
+            </Link>
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum

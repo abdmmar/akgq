@@ -15,6 +15,7 @@ const Zine = () => {
     <main>
       <Cover />
       <Editorial />
+      <SpotifyPlaylist />
       <ShoutOut />
       <BehindTheScene />
       <SemogaKitaBerjumpa />
@@ -23,7 +24,6 @@ const Zine = () => {
       <PhotoDump />
       <AKGQGallery />
       <Epilog />
-      <SpotifyPlaylist />
     </main>
   )
 }

@@ -1,18 +1,23 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withMDX = require('@next/mdx')({
+import nextMDX from '@next/mdx'
+import remarkFrontmatter from 'remark-frontmatter'
+
+const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkFrontmatter],
     rehypePlugins: [],
     providerImportSource: '@mdx-js/react',
   },
 })
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withMDX({
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  experimental: {
+    scrollRestoration: true,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -22,6 +27,6 @@ const nextConfig = {
 
     return config
   },
-}
+})
 
-module.exports = withMDX(nextConfig)
+export default nextConfig

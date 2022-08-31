@@ -1,41 +1,66 @@
 import styled, { useTheme } from 'styled-components'
 import NextImage from 'next/image'
 import Link from 'next/link'
+import useSWR from 'swr'
+import { SharingSessionData } from '../../pages/api/sharing-session'
+import { Colors } from '../../styles/theme.types'
+
+const sharingSessionCardTheme = (colors: Colors, index: number) => {
+  switch (index) {
+    case 0:
+      return {
+        bgColor: colors.cream,
+        textColor: colors.torchRed,
+      }
+    case 1:
+      return {
+        bgColor: colors.yogyaBlue,
+        textColor: colors.white,
+      }
+    case 2:
+    default:
+      return {
+        bgColor: colors.white,
+        textColor: colors.midnight,
+      }
+  }
+}
 
 const SharingSession = () => {
   const theme = useTheme()
+  const { data, error } = useSWR<{ data: Array<SharingSessionData> }>(
+    '/api/sharing-session',
+    (url) => {
+      return fetch(url).then((res) => res.json())
+    },
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    },
+  )
 
   return (
     <Container>
       <Wrapper>
-        <SharingCard
-          bgColor={theme.colors.cream}
-          textColor={theme.colors.torchRed}
-          href="/cerita-wapjeh"
-          author="Oleh: Dinda Qatrunnada"
-          title="Cerita Wapjeh: Membangun Bisnis Olshop dari Nol"
-          summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        />
-        <SharingCard
-          bgColor={theme.colors.yogyaBlue}
-          textColor={theme.colors.white}
-          href="/cerita-oik"
-          author="Oleh: Azizah Qalbi"
-          title="Cerita Oik: Cara Menjadi DevOps Engineer"
-          summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-          reverse
-        />
-        <SharingCard
-          bgColor={theme.colors.white}
-          textColor={theme.colors.midnight}
-          href="/cerita-jidan"
-          author="Oleh: Abdulah Azzam"
-          title="Cerita Zidan: Menjadi Guru"
-          summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        />
+        {data?.data
+          ? data.data.map((item, i) => {
+              const cardTheme = sharingSessionCardTheme(theme.colors, i)
+              return (
+                <SharingCard
+                  key={item.title}
+                  bgColor={cardTheme.bgColor}
+                  textColor={cardTheme.textColor}
+                  href={item.href}
+                  imgSrc={`/images/${item.image}`}
+                  author={`Oleh: ${item.author}`}
+                  title={item.title}
+                  summary={item.summary || ''}
+                  reverse={i % 2 !== 0}
+                />
+              )
+            })
+          : null}
       </Wrapper>
     </Container>
   )
@@ -60,6 +85,7 @@ interface SharingCardProps {
   author: string
   summary: string
   href?: string
+  imgSrc?: string
 }
 
 const SharingCard = (props: SharingCardProps) => {
@@ -75,11 +101,21 @@ const SharingCard = (props: SharingCardProps) => {
                 summary={props.summary}
                 reverse={props.reverse}
               />
-              <NextImage src="/images/akgq-peace.jpg" height={440} width={750} objectFit="cover" />
+              <NextImage
+                src={props.imgSrc || '/cover'}
+                height={440}
+                width={750}
+                objectFit="cover"
+              />
             </>
           ) : (
             <>
-              <NextImage src="/images/akgq-peace.jpg" height={440} width={750} objectFit="cover" />
+              <NextImage
+                src={props.imgSrc || '/cover'}
+                height={440}
+                width={750}
+                objectFit="cover"
+              />
               <SharingCardContent
                 author={props.author}
                 title={props.title}
