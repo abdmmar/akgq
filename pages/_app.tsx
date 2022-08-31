@@ -5,10 +5,10 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyles from '../styles/globals'
 import { getTheme } from '../styles/theme'
 import { mdxComponents } from '../components/Content'
-import usePreserveScroll from '../hooks/usePreserveScroll'
+import useScrollRestoration from '../hooks/useScrollRestoration'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  usePreserveScroll()
+function MyApp({ Component, pageProps, router }: AppProps) {
+  useScrollRestoration(router)
 
   return (
     <ThemeProvider theme={getTheme()}>
