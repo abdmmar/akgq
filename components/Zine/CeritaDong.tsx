@@ -68,6 +68,7 @@ const CeritaDongKack = () => {
 }
 
 const Container = styled(_Container)`
+  min-height: unset;
   background-color: ${(props) => props.theme.colors.midnight};
   color: ${(props) => props.theme.colors.white};
 `
