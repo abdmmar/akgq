@@ -183,7 +183,6 @@ const CerpenContent = styled.div`
   gap: 1rem;
   padding: 1rem;
   min-height: 230px;
-  max-width: 360px;
   background-color: ${(props) => props.theme.colors.cream};
   box-shadow: 10px 10px 0px ${(props) => props.theme.colors.yogyaBlue};
   transition: box-shadow 150ms;

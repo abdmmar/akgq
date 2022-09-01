@@ -92,6 +92,7 @@ const GlobalStyles = createGlobalStyle`
 
   .dkb-masonry-grid-column > div {
       margin-bottom: 2rem; /* space between items */
+      width: fit-content;
     }
 
   /* Optional, different gutter size on mobile */
