@@ -90,15 +90,17 @@ const GlobalStyles = createGlobalStyle`
     background-clip: padding-box;
   }
 
+  .dkb-masonry-grid-column > div {
+      margin-bottom: 2rem; /* space between items */
+    }
+
   /* Optional, different gutter size on mobile */
   @media (max-width: 800px) {
-    .my-masonry-grid {
-      margin-left: -15px; /* gutter size offset */
-    }
-    .my-masonry-grid_column {
+
+    .dkb-masonry-grid-column_column {
       padding-left: 15px; /* gutter size offset */
     }
-    .my-masonry-grid_column > div {
+    .dkb-masonry-grid-column_column > div {
       margin-bottom: 15px; /* space between items */
     }
   }

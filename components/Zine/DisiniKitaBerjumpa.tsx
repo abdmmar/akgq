@@ -1,18 +1,36 @@
+import * as React from 'react'
 import Link from 'next/link'
+import { DKBList } from 'pages/api/dkb'
 import Masonry from 'react-masonry-css'
 import styled from 'styled-components'
-import { colors } from 'styles/theme'
+import useSWR from 'swr'
 import _Container from '../Common/Container'
 import Text from '../Common/Text'
 
-const breakpointColumns = {
+export interface DKBData {
+  name: string
+  message: string
+}
+
+const shortBreakpointColumns = {
   default: 4,
   1100: 3,
   700: 2,
   500: 1,
 }
 
+const longBreakpointColumns = {
+  default: 2,
+  500: 1,
+}
+
 const DisiniKitaBerjumpa = () => {
+  const { data, error } = useSWR<{ data: DKBList }>('/api/dkb', (url) =>
+    fetch(url).then((res) => res.json()),
+  )
+
+  const [showLongList, setShowLongList] = React.useState(false)
+
   return (
     <Container>
       <Wrapper>
@@ -26,17 +44,24 @@ const DisiniKitaBerjumpa = () => {
               <Link href="/dkb/cerpen-refa">
                 <a>
                   <CerpenContent>
-                    <Text
-                      as="h3"
-                      size="clamp(1.5rem, 16vw - 2rem, 2rem)"
-                      weight="700"
-                      lineHeight="94.52%"
-                      color="torchRed"
-                      margin="0"
-                    >
-                      Reuni: Semburat rindu yang terbit, menyongsong masa depan cerah
+                    <div>
+                      <Text margin="0 0 0.5rem 0" color="torchRed">
+                        Cerita Pendek
+                      </Text>
+                      <Text
+                        as="h3"
+                        size="1.5rem"
+                        weight="700"
+                        lineHeight="94.52%"
+                        color="torchRed"
+                        margin="0"
+                      >
+                        Reuni: Semburat rindu yang terbit, menyongsong masa depan cerah
+                      </Text>
+                    </div>
+                    <Text fontStyle="italic" color="yogyaBlue">
+                      Oleh: Refa Triana
                     </Text>
-                    <Text>Oleh: Refa Triana</Text>
                   </CerpenContent>
                 </a>
               </Link>
@@ -45,28 +70,65 @@ const DisiniKitaBerjumpa = () => {
               <Link href="/dkb/cerpen-adib">
                 <a>
                   <CerpenContent>
-                    <Text
-                      as="h3"
-                      size="clamp(1.5rem, 16vw - 2rem, 2rem)"
-                      weight="700"
-                      lineHeight="94.52%"
-                      color="torchRed"
-                      margin="0"
-                    >
-                      Arya Sang Manajer
+                    <div>
+                      <Text margin="0 0 0.5rem 0" color="torchRed">
+                        Cerita Pendek
+                      </Text>
+                      <Text
+                        as="h3"
+                        size="1.5rem"
+                        weight="700"
+                        lineHeight="94.52%"
+                        color="torchRed"
+                        margin="0"
+                      >
+                        Arya Sang Manajer
+                      </Text>
+                    </div>
+                    <Text fontStyle="italic" color="yogyaBlue">
+                      Oleh: Adib Surya
                     </Text>
-                    <Text>Oleh: Adib Surya</Text>
                   </CerpenContent>
                 </a>
               </Link>
             </CerpenContainer>
           </ContentWrapper>
           <div>
-            <Masonry
-              breakpointCols={breakpointColumns}
-              className="dkb-masonry-grid"
-              columnClassName="dkb-masonry-grid-column"
-            ></Masonry>
+            {data?.data.short && (
+              <Masonry
+                breakpointCols={shortBreakpointColumns}
+                className="dkb-masonry-grid"
+                columnClassName="dkb-masonry-grid-column"
+              >
+                {data.data.short.map((item, i) => {
+                  return (
+                    <ShoutOut key={`${i}${item.name}`}>
+                      <Text>{item.message}</Text>
+                      <Text opacity={0.6}>{item.name}</Text>
+                    </ShoutOut>
+                  )
+                })}
+              </Masonry>
+            )}
+            {!showLongList ? (
+              <Button onClick={() => setShowLongList(true)}>Load More Story</Button>
+            ) : null}
+            {data?.data.long && showLongList ? (
+              <Masonry
+                breakpointCols={longBreakpointColumns}
+                className="dkb-masonry-grid"
+                columnClassName="dkb-masonry-grid-column"
+              >
+                {data.data.long.map((item, i) => {
+                  return (
+                    <ShoutOut key={`${i}${item.name}`}>
+                      <Text>{item.message}</Text>
+                      <Text opacity={0.6}>{item.name}</Text>
+                    </ShoutOut>
+                  )
+                })}
+              </Masonry>
+            ) : null}
           </div>
         </Content>
       </Wrapper>
@@ -89,13 +151,18 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 5rem;
 `
 
 const ContentWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 `
 
 const H2 = styled.h2`
@@ -107,8 +174,6 @@ const CerpenContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 360px;
-  min-height: 230px;
 `
 
 const CerpenContent = styled.div`
@@ -116,26 +181,42 @@ const CerpenContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
+  padding: 1rem;
+  min-height: 230px;
+  max-width: 360px;
   background-color: ${(props) => props.theme.colors.cream};
   box-shadow: 10px 10px 0px ${(props) => props.theme.colors.yogyaBlue};
-`
-
-const CircleButton = styled.button<{ bgColor?: string; textColor?: string }>`
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.white)};
-  color: ${(props) => (props.textColor ? props.textColor : props.theme.colors.midnight)};
-  height: 86px;
-  width: 86px;
-  transition: all 100ms;
+  transition: box-shadow 150ms;
 
   &:hover {
-    p {
-      color: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.white)};
-    }
-    background-color: ${(props) =>
-      props.textColor ? props.textColor : props.theme.colors.midnight};
+    box-shadow: none;
+  }
+`
+
+const ShoutOut = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: ${(props) => props.theme.colors.midnight};
+  color: ${(props) => props.theme.colors.cream};
+  border-bottom: 1px solid ${(props) => props.theme.colors.white};
+`
+
+const Button = styled.div`
+  border: 0;
+  width: fit-content;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.colors.torchRed};
+  color: ${(props) => props.theme.colors.cream};
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 200ms;
+
+  &:hover {
+    box-shadow: 5px 5px 0 ${(props) => props.theme.colors.midnight};
   }
 `
 
