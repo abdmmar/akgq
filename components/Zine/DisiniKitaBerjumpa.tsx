@@ -1,8 +1,16 @@
 import Link from 'next/link'
+import Masonry from 'react-masonry-css'
 import styled from 'styled-components'
-import { colors } from '../../styles/theme'
+import { colors } from 'styles/theme'
 import _Container from '../Common/Container'
 import Text from '../Common/Text'
+
+const breakpointColumns = {
+  default: 4,
+  1100: 3,
+  700: 2,
+  500: 1,
+}
 
 const DisiniKitaBerjumpa = () => {
   return (
@@ -10,57 +18,56 @@ const DisiniKitaBerjumpa = () => {
       <Wrapper>
         <div>
           <H2>Disini Kita Berjumpa</H2>
-          <p>Kolom curhat dari mereka yang nggak berangkat</p>
+          <p>Ada kejadian apa aja sih di reuni kemaren?</p>
         </div>
         <Content>
-          <CeritaDongWrapper>
-            <CeritaDongContent>
-              <Text
-                as="h3"
-                size="clamp(1.5rem, 16vw - 2rem, 2rem)"
-                weight="700"
-                lineHeight="94.52%"
-                color="cream"
-                margin="0"
-              >
-                Dari: Dil*
-              </Text>
-              <Text>Mahasiswa Turki Semester Akhir yang Bucin Nggak Ketolong</Text>
-            </CeritaDongContent>
-            <Link href="/cerita-dil">
-              <a>
-                <CircleButton bgColor={colors.cream} textColor={colors.torchRed}>
-                  <Text weight="700" color="torchRed" margin="0" size="14px">
-                    Read More
-                  </Text>
-                </CircleButton>
-              </a>
-            </Link>
-          </CeritaDongWrapper>
-          <CeritaDongWrapper>
-            <CeritaDongContent>
-              <Text
-                as="h3"
-                size="clamp(1.5rem, 16vw - 2rem, 2rem)"
-                weight="700"
-                lineHeight="94.52%"
-                color="torchRed"
-                margin="0"
-              >
-                Dari: Anonim Asal P**de****g
-              </Text>
-              <Text>Korban PHP Dosbing :&apos;(</Text>
-            </CeritaDongContent>
-            <Link href="/cerita-anonim">
-              <a>
-                <CircleButton bgColor={colors.yogyaBlue} textColor={colors.cream}>
-                  <Text weight="700" color="cream" margin="0" size="14px">
-                    Read More
-                  </Text>
-                </CircleButton>
-              </a>
-            </Link>
-          </CeritaDongWrapper>
+          <ContentWrapper>
+            <CerpenContainer>
+              <Link href="/dkb/cerpen-refa">
+                <a>
+                  <CerpenContent>
+                    <Text
+                      as="h3"
+                      size="clamp(1.5rem, 16vw - 2rem, 2rem)"
+                      weight="700"
+                      lineHeight="94.52%"
+                      color="torchRed"
+                      margin="0"
+                    >
+                      Reuni: Semburat rindu yang terbit, menyongsong masa depan cerah
+                    </Text>
+                    <Text>Oleh: Refa Triana</Text>
+                  </CerpenContent>
+                </a>
+              </Link>
+            </CerpenContainer>
+            <CerpenContainer>
+              <Link href="/dkb/cerpen-adib">
+                <a>
+                  <CerpenContent>
+                    <Text
+                      as="h3"
+                      size="clamp(1.5rem, 16vw - 2rem, 2rem)"
+                      weight="700"
+                      lineHeight="94.52%"
+                      color="torchRed"
+                      margin="0"
+                    >
+                      Arya Sang Manajer
+                    </Text>
+                    <Text>Oleh: Adib Surya</Text>
+                  </CerpenContent>
+                </a>
+              </Link>
+            </CerpenContainer>
+          </ContentWrapper>
+          <div>
+            <Masonry
+              breakpointCols={breakpointColumns}
+              className="dkb-masonry-grid"
+              columnClassName="dkb-masonry-grid-column"
+            ></Masonry>
+          </div>
         </Content>
       </Wrapper>
     </Container>
@@ -80,6 +87,13 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 3rem;
+`
+
+const ContentWrapper = styled.div`
+  display: flex;
   flex-wrap: wrap;
   gap: 3rem;
 `
@@ -89,7 +103,7 @@ const H2 = styled.h2`
   color: ${(props) => props.theme.colors.white};
 `
 
-const CeritaDongWrapper = styled.div`
+const CerpenContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -97,10 +111,13 @@ const CeritaDongWrapper = styled.div`
   min-height: 230px;
 `
 
-const CeritaDongContent = styled.div`
+const CerpenContent = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 1rem;
+  background-color: ${(props) => props.theme.colors.cream};
+  box-shadow: 10px 10px 0px ${(props) => props.theme.colors.yogyaBlue};
 `
 
 const CircleButton = styled.button<{ bgColor?: string; textColor?: string }>`

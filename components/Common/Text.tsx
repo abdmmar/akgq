@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { colors } from '../../styles/theme'
-import { Color } from '../../styles/theme.types'
+import { colors } from 'styles/theme'
+import { Color } from 'styles/theme.types'
 
 const Text = styled.p<{
   color?: Color

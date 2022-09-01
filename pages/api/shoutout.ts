@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
-import { ShoutOutData } from '../../components/Zine/ShoutOut'
+import { ShoutOutData } from 'components/Zine/ShoutOut'
 import readCSV from '../../utils/readCSV'
 
 export default async function handler(

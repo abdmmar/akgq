@@ -3,7 +3,7 @@ import NextImage from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
 import { SharingSessionData } from '../../pages/api/sharing-session'
-import { Colors } from '../../styles/theme.types'
+import { Colors } from 'styles/theme.types'
 
 const sharingSessionCardTheme = (colors: Colors, index: number) => {
   switch (index) {
@@ -106,6 +106,7 @@ const SharingCard = (props: SharingCardProps) => {
                 height={440}
                 width={750}
                 objectFit="cover"
+                loading="lazy"
               />
             </>
           ) : (
@@ -115,6 +116,7 @@ const SharingCard = (props: SharingCardProps) => {
                 height={440}
                 width={750}
                 objectFit="cover"
+                loading="lazy"
               />
               <SharingCardContent
                 author={props.author}

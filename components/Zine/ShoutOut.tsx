@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled, { keyframes } from 'styled-components'
 import useSWR from 'swr'
 import { useWindowSize } from '../../hooks/useWindowSize'
-import { colors } from '../../styles/theme'
+import { colors } from 'styles/theme'
 
 export interface ShoutOutData {
   message: string

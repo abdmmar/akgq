@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { colors } from '../../styles/theme'
+import { colors } from 'styles/theme'
 import _Container from '../Common/Container'
 import Text from '../Common/Text'
 
@@ -27,7 +27,7 @@ const CeritaDongKack = () => {
               </Text>
               <Text>Mahasiswa Turki Semester Akhir yang Bucin Nggak Ketolong</Text>
             </CeritaDongContent>
-            <Link href="/cerita-dil">
+            <Link href="/cerita-dong/dil">
               <a>
                 <CircleButton bgColor={colors.cream} textColor={colors.torchRed}>
                   <Text weight="700" color="torchRed" margin="0" size="14px">
@@ -51,7 +51,7 @@ const CeritaDongKack = () => {
               </Text>
               <Text>Korban PHP Dosbing :&apos;(</Text>
             </CeritaDongContent>
-            <Link href="/cerita-anonim">
+            <Link href="/cerita-dong/anonim">
               <a>
                 <CircleButton bgColor={colors.yogyaBlue} textColor={colors.cream}>
                   <Text weight="700" color="cream" margin="0" size="14px">

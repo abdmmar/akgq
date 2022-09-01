@@ -15,15 +15,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ data?: Array<SharingSessionData | undefined>; error?: string }>,
 ) {
-  const mdxDir = path.join(process.cwd(), 'pages')
+  const sharingSessionDir = 'sharing-session'
+  const mdxDir = path.join(process.cwd(), 'pages', sharingSessionDir)
   const mdxs: Array<SharingSessionData | undefined> = fs
     .readdirSync(mdxDir, { encoding: 'utf-8' })
     .map((fname) => {
       const fileName = path.join(mdxDir, fname)
-      if (fname.startsWith('sharing-session') && fileName.endsWith('.mdx')) {
+      if (fileName.endsWith('.mdx')) {
         const fileContent = fs.readFileSync(fileName, 'utf-8')
         const { data } = matter(fileContent)
-        const info = { ...data, href: fname.split('.mdx')[0] }
+        const info = { ...data, href: `${sharingSessionDir}/${fname.split('.mdx')[0]}` }
         return info as SharingSessionData
       }
     })

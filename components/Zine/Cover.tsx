@@ -14,11 +14,18 @@ const Cover = () => {
           width={545}
           height={640}
           objectFit="cover"
+          loading="lazy"
           alt="Illustration about Tugu Jogja"
         />
         <Content>
           <div>
-            <NextImage src="/akgq.svg" width={48} height={66} alt="Akyas and GenQ Temporary Logo" />
+            <NextImage
+              src="/akgq.svg"
+              width={48}
+              height={66}
+              alt="Akyas and GenQ Temporary Logo"
+              loading="lazy"
+            />
           </div>
           <div>
             <CopyText>

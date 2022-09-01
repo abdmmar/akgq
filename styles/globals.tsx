@@ -77,6 +77,33 @@ const GlobalStyles = createGlobalStyle`
   h5 {font-size: 1.25rem;}
 
   small, .text_small {font-size: 0.8rem;}
+
+  /* react-masonry-grid style */
+  .dkb-masonry-grid {
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+  }
+  
+  .dkb-masonry-grid-column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+  }
+
+  /* Optional, different gutter size on mobile */
+  @media (max-width: 800px) {
+    .my-masonry-grid {
+      margin-left: -15px; /* gutter size offset */
+    }
+    .my-masonry-grid_column {
+      padding-left: 15px; /* gutter size offset */
+    }
+    .my-masonry-grid_column > div {
+      margin-bottom: 15px; /* space between items */
+    }
+  }
+  /* react-masonry-grid style */
+
 `
 
 export default GlobalStyles

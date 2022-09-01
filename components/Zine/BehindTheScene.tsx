@@ -35,6 +35,7 @@ const BehindTheScene = () => {
           width={470}
           height={700}
           objectFit="cover"
+          loading="lazy"
           alt="Illustration about Tugu Jogja"
         />
       </Wrapper>
