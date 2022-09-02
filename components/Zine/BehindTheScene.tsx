@@ -20,10 +20,11 @@ const BehindTheScene = () => {
               </a>
             </Link>
             <Text color="yogyaBlue">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam,
+              Serba-serbi rangkaian acara reuni yang menarik dan seru kemarin bener-bener
+              <i>memorable</i> banget ya, fwen, di benak kita semua. Mulai dari pertama kali
+              menjejakkan kaki di villa aja udah kerasa banget euforianya, belum lagi serangkaian
+              acaranya yang sukses bikin kita semua <i>fix</i> nggak bisa <i>move on</i> sampai
+              berhari-hari atau, mungkin, sampai bertahun-tahun!
             </Text>
           </div>
           <Link href="/bts">
