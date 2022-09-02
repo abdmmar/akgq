@@ -1,8 +1,10 @@
 import * as React from 'react'
 import styled, { keyframes } from 'styled-components'
 import useSWR from 'swr'
+
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { colors } from 'styles/theme'
+import _Container from 'components/Common/Container'
 
 export interface ShoutOutData {
   message: string
@@ -178,8 +180,9 @@ const Wrapper = styled.div`
   flex-direction: column;
 `
 
-const Header = styled.div`
-  padding: 0 150px;
+const Header = styled(_Container)`
+  min-height: unset;
+  padding: 20px;
   background-color: ${(props) => props.theme.colors.cream};
 `
 

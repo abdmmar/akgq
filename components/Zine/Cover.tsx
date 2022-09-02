@@ -2,22 +2,17 @@ import styled, { useTheme } from 'styled-components'
 import NextImage from 'next/image'
 
 import Container from '../Common/Container'
+import Text from 'components/Common/Text'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const Cover = () => {
   const theme = useTheme()
+  const size = useWindowSize()
 
   return (
     <Container>
       <Wrapper>
-        <NextImage
-          src="/images/cover.jpeg"
-          width={545}
-          height={640}
-          objectFit="cover"
-          loading="lazy"
-          alt="Illustration about Tugu Jogja"
-        />
-        <Content>
+        {size?.width && size.width <= 500 ? (
           <div>
             <NextImage
               src="/akgq.svg"
@@ -27,17 +22,38 @@ const Cover = () => {
               loading="lazy"
             />
           </div>
+        ) : null}
+        <NextImage
+          src="/images/cover.jpeg"
+          width={545}
+          height={640}
+          objectFit="cover"
+          loading="lazy"
+          alt="Illustration about Tugu Jogja"
+        />
+        <Content>
+          {size?.width && size.width > 500 ? (
+            <div>
+              <NextImage
+                src="/akgq.svg"
+                width={48}
+                height={66}
+                alt="Akyas and GenQ Temporary Logo"
+                loading="lazy"
+              />
+            </div>
+          ) : null}
           <div>
-            <CopyText>
+            <Text color="yogyaBlue" margin="0">
               <strong>Special Edition:</strong>
-            </CopyText>
+            </Text>
             <H1>Reunion</H1>
-            <CopyText>
+            <Text color="yogyaBlue">
               Take a scroll down memory lane... <br />
               Tell us which moments you loved the most.
-            </CopyText>
+            </Text>
           </div>
-          <div>
+          <ArrowBottom>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width={32}
@@ -55,7 +71,7 @@ const Cover = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </div>
+          </ArrowBottom>
         </Content>
       </Wrapper>
     </Container>
@@ -66,6 +82,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 52px;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `
 
 const Content = styled.div`
@@ -73,6 +94,10 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding-block: 24px;
+
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
 `
 
 const H1 = styled.h1`
@@ -80,8 +105,8 @@ const H1 = styled.h1`
   color: ${(props) => props.theme.colors.midnight};
 `
 
-const CopyText = styled.p`
-  color: ${(props) => props.theme.colors.yogyaBlue};
+const ArrowBottom = styled.div`
+  margin-top: 3rem;
 `
 
 export default Cover

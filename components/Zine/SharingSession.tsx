@@ -4,6 +4,7 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import { SharingSessionData } from '../../pages/api/sharing-session'
 import { Colors } from 'styles/theme.types'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const sharingSessionCardTheme = (colors: Colors, index: number) => {
   switch (index) {
@@ -89,11 +90,14 @@ interface SharingCardProps {
 }
 
 const SharingCard = (props: SharingCardProps) => {
+  const size = useWindowSize()
+  const isMobile = size.width && size?.width <= 425
+
   return (
     <Link href={props.href || '/'}>
       <a>
         <CardContainer bgColor={props.bgColor} textColor={props.textColor} reverse={props.reverse}>
-          {props.reverse ? (
+          {props.reverse && !isMobile ? (
             <>
               <SharingCardContent
                 author={props.author}
@@ -157,16 +161,29 @@ const CardContainer = styled.div<{ bgColor?: string; textColor?: string; reverse
   grid-template-columns: ${(props) => (props.reverse ? '60% 40% ' : '40% 60%')};
   background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.white)};
   color: ${(props) => (props.bgColor ? props.textColor : props.theme.colors.midnight)};
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const CardContent = styled.div<{ reverse?: boolean }>`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: ${(props) => (props.reverse ? '20px 20px 20px 170px' : '20px 170px 20px 20px')};
 
   @media screen and (max-width: 1024px) {
-    padding: ${(props) => (props.reverse ? '20px 20px 20px 120px' : '20px 170px 20px 20px')};
+    padding: ${(props) => (props.reverse ? '20px 20px 20px 120px' : '20px 120px 20px 20px')};
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 425px) {
+    padding: 20px;
   }
 `
 

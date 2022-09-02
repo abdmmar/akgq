@@ -2,22 +2,24 @@ import styled from 'styled-components'
 import NextImage from 'next/image'
 import Container from '../Common/Container'
 import Link from 'next/link'
+import Text from 'components/Common/Text'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const BehindTheScene = () => {
+  const size = useWindowSize()
+
   return (
     <Container>
       <Wrapper>
         <Content>
           <div>
-            <Text>Oleh: Nadia Tahani</Text>
+            <Text color="yogyaBlue">Oleh: Nadia Tahani</Text>
             <Link href="/bts">
               <a>
-                <H2>
-                  Behind <br /> The Scene
-                </H2>
+                <H2>Behind {size?.width && size.width > 425 ? <br /> : null} The Scene</H2>
               </a>
             </Link>
-            <Text>
+            <Text color="yogyaBlue">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum
               dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -46,7 +48,12 @@ const BehindTheScene = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap-reverse;
   gap: 52px;
+
+  @media screen and (max-width: 425px) {
+    gap: 1rem;
+  }
 `
 
 const Content = styled.div`
@@ -61,13 +68,6 @@ const H2 = styled.h2`
   margin-bottom: 1.25rem;
   color: ${(props) => props.theme.colors.midnight};
   letter-spacing: -0.035em;
-  margin-left: -5px;
-`
-
-const Text = styled.p<{ color?: string }>`
-  margin-bottom: 1rem;
-  max-width: 60ch;
-  color: ${(props) => props.color || props.theme.colors.yogyaBlue};
 `
 
 const Button = styled.div`

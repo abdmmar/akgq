@@ -46,7 +46,9 @@ const Wrapper = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.yogyaBlue};
   padding: 2rem;
+  gap: 2rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `
 
