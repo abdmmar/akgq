@@ -26,7 +26,7 @@ const SpotifyPlaylist = () => {
         <iframe
           src="https://open.spotify.com/embed/playlist/4pWUPTlowbFY0RN3cR4tI1?utm_source=generator"
           width="100%"
-          style={{ maxWidth: '500px' }}
+          style={{ maxWidth: '400px' }}
           height="300"
           frameBorder="0"
           allowFullScreen
