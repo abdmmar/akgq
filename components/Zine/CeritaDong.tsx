@@ -23,7 +23,7 @@ const CeritaDongKack = () => {
                 color="cream"
                 margin="0"
               >
-                Dari: Dil*
+                Dari: Dil
               </Text>
               <Text>Mahasiswa Turki Semester Akhir yang Bucin Nggak Ketolong</Text>
             </CeritaDongContent>
