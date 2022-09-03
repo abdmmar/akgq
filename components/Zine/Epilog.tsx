@@ -7,7 +7,7 @@ const Epilog = () => {
     <Container>
       <Wrapper>
         <div>
-          <Text as="h2" size="2rem" lineHeight="1.2">
+          <Text as="h2" size="2rem" lineHeight="1.2" weight="700">
             Ucapan Terima Kasih dari Kru AKGQ
           </Text>
           <br />
