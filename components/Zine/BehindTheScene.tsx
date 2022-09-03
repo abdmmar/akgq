@@ -7,7 +7,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 
 const BehindTheScene = () => {
   const size = useWindowSize()
-
+  const isMobile = size?.width && size.width <= 425
   return (
     <Container>
       <Wrapper>
@@ -16,7 +16,7 @@ const BehindTheScene = () => {
             <Text color="yogyaBlue">Oleh: Nadia Tahani</Text>
             <Link href="/bts">
               <a>
-                <H2>Behind {size?.width && size.width > 425 ? <br /> : null} The Scene</H2>
+                <H2>Behind {isMobile ? null : <br />} The Scene</H2>
               </a>
             </Link>
             <Text color="yogyaBlue">
@@ -34,9 +34,9 @@ const BehindTheScene = () => {
           </Link>
         </Content>
         <NextImage
-          src="/images/akgq-peace.jpg"
+          src="/images/islah21.jpg"
           width={470}
-          height={700}
+          height={isMobile ? 400 : 700}
           objectFit="cover"
           loading="lazy"
           alt="Illustration about Tugu Jogja"

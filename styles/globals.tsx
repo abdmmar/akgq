@@ -97,6 +97,9 @@ const GlobalStyles = createGlobalStyle`
 
   /* Optional, different gutter size on mobile */
   @media (max-width: 800px) {
+    .dkb-masonry-grid {
+      margin-left: -15px;
+    }
 
     .dkb-masonry-grid-column {
       padding-left: 15px; /* gutter size offset */

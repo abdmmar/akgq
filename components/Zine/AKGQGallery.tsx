@@ -32,6 +32,9 @@ const AKGQGallery = () => {
   return (
     <Container>
       <Wrapper>
+        <div>
+          <H2>AKGQ Gallery</H2>
+        </div>
         <Masonry
           breakpointCols={breakpointColumns}
           className="gallery-grid"
@@ -49,6 +52,7 @@ const AKGQGallery = () => {
                     height={img?.thumbnail?.height}
                     alt={'Photo of Akyas and GenQ magazine crew'}
                     onClick={() => openLightbox(i)}
+                    loading="lazy"
                   />
                 )
               })
@@ -81,8 +85,8 @@ const Container = styled(_Container)`
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 52px;
+  flex-direction: column;
+  gap: 2rem;
 `
 
 const Masonry = styled(_Masonry)`
@@ -102,7 +106,6 @@ const Masonry = styled(_Masonry)`
 `
 
 const H2 = styled.h2`
-  margin-bottom: 2rem;
   font-size: clamp(2rem, 16vw - 4rem, 4rem);
   color: ${(props) => props.theme.colors.white};
 `
