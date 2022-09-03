@@ -19,7 +19,7 @@ export interface Props {
 
 // const ResponsiveImage = (props: any) => <Image alt={props.alt} layout="fill" {...props} />
 
-const H1 = styled.h1`
+export const H1 = styled.h1`
   font-size: clamp(3rem, 16vw - 4rem, 4rem);
   line-height: 1.1;
   margin-bottom: 2rem;
@@ -27,7 +27,7 @@ const H1 = styled.h1`
   color: ${(props) => props.theme.colors.midnight};
 `
 
-const H2 = styled.h2`
+export const H2 = styled.h2`
   font-size: clamp(1.5rem, 16vw - 2.441rem, 2.441rem);
   line-height: 0.9;
   color: ${(props) => props.theme.colors.midnight};
@@ -35,14 +35,14 @@ const H2 = styled.h2`
   max-width: 900px;
 `
 
-const H3 = styled.h3`
+export const H3 = styled.h3`
   font-size: clamp(1.3rem, 16vw - 1.953rem, 1.953rem);
   color: ${(props) => props.theme.colors.yogyaBlue};
   margin-bottom: 1rem;
   max-width: 900px;
 `
 
-const Text = styled(_Text)`
+export const Text = styled(_Text)`
   color: ${(props) => props.color || props.theme.colors.midnight};
 `
 
