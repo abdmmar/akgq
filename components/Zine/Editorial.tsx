@@ -108,10 +108,15 @@ const H2 = styled.h2`
 const Content = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+
   gap: 52px;
 
   @media screen and (max-width: 425px) {
+    gap: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
     gap: 0;
   }
 `
