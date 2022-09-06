@@ -30,10 +30,10 @@ export default async function handler(
 
       if (imageFileStat.isFile()) {
         const thumbnailFilePath = path.join(galleryThumbnailDir, fname)
-        // const metadata = await sharp(fileName)
+        // const metadata = await sharp(imageFilePath)
         //   .resize({ width: 250 })
         //   .toFormat('jpeg', { mozjpeg: true })
-        //   .toFile(thumbnailPath)
+        //   .toFile(thumbnailFilePath)
         const image = await sharp(imageFilePath).metadata()
         const thumbnail = await sharp(thumbnailFilePath).metadata()
         const imageData = {
