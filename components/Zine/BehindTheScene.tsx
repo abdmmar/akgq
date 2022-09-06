@@ -49,10 +49,10 @@ const BehindTheScene = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap-reverse;
   gap: 52px;
 
   @media screen and (max-width: 425px) {
+    flex-wrap: wrap-reverse;
     gap: 1rem;
   }
 `

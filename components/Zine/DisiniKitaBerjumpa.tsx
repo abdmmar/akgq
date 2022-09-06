@@ -104,7 +104,7 @@ const DisiniKitaBerjumpa = () => {
                   return (
                     <ShoutOut key={`${i}${item.name}`}>
                       <Text>{item.message}</Text>
-                      <Text opacity={0.6}>{item.name}</Text>
+                      <Label>{item.name}</Label>
                     </ShoutOut>
                   )
                 })}
@@ -123,7 +123,7 @@ const DisiniKitaBerjumpa = () => {
                   return (
                     <ShoutOut key={`${i}${item.name}`}>
                       <Text>{item.message}</Text>
-                      <Text opacity={0.6}>{item.name}</Text>
+                      <Label>{item.name}</Label>
                     </ShoutOut>
                   )
                 })}
@@ -199,6 +199,15 @@ const ShoutOut = styled.div`
   background-color: ${(props) => props.theme.colors.midnight};
   color: ${(props) => props.theme.colors.cream};
   border-bottom: 1px solid ${(props) => props.theme.colors.white};
+`
+
+const Label = styled(Text)`
+  opacity: 0.6;
+  font-size: 0.9rem;
+  padding: 3px 8px;
+  border: 1px solid white;
+  border-radius: 50px;
+  width: fit-content;
 `
 
 const Button = styled.div`
