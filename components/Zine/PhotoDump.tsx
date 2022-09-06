@@ -14,7 +14,7 @@ const PhotoDump = () => {
           .map((_, i) => (
             <NextImage
               key={i + 1}
-              src={`/images/photodump/${i + 1}.png`}
+              src={`/images/photodump/${i + 1}.PNG`}
               layout="responsive"
               objectFit="cover"
               loading="lazy"
