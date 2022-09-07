@@ -2,9 +2,11 @@ import styled, { useTheme } from 'styled-components'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
-import { SharingSessionData } from '../../pages/api/sharing-session'
+
+import { SharingSessionData } from 'pages/api/sharing-session'
 import { Colors } from 'styles/theme.types'
 import { useWindowSize } from 'hooks/useWindowSize'
+import Error from 'components/Error'
 
 const sharingSessionCardTheme = (colors: Colors, index: number) => {
   switch (index) {
@@ -40,6 +42,10 @@ const SharingSession = () => {
       revalidateOnReconnect: false,
     },
   )
+
+  if (error) {
+    return <Error />
+  }
 
   return (
     <Container>

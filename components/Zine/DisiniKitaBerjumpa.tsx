@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import useSWR from 'swr'
 import _Container from '../Common/Container'
 import Text from '../Common/Text'
+import Error from 'components/Error'
 
 export interface DKBData {
   name: string
@@ -25,11 +26,21 @@ const longBreakpointColumns = {
 }
 
 const DisiniKitaBerjumpa = () => {
-  const { data, error } = useSWR<{ data: DKBList }>('/api/dkb', (url) =>
-    fetch(url).then((res) => res.json()),
+  const { data, error } = useSWR<{ data: DKBList }>(
+    '/api/dkb',
+    (url) => fetch(url).then((res) => res.json()),
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    },
   )
 
   const [showLongList, setShowLongList] = React.useState(false)
+
+  if (error) {
+    return <Error />
+  }
 
   return (
     <Container>

@@ -8,6 +8,7 @@ import 'react-image-lightbox/style.css'
 
 import _Container from '../Common/Container'
 import { ImageData } from 'pages/api/gallery'
+import Error from 'components/Error'
 
 const breakpointColumns = {
   default: 4,
@@ -16,8 +17,14 @@ const breakpointColumns = {
 }
 
 const AKGQGallery = () => {
-  const { data, error } = useSWR<{ data: Array<ImageData> }>('/api/gallery', (url) =>
-    fetch(url).then((res) => res.json()),
+  const { data, error } = useSWR<{ data: Array<ImageData> }>(
+    '/api/gallery',
+    (url) => fetch(url).then((res) => res.json()),
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    },
   )
   const images = data ? data.data : []
 
@@ -27,6 +34,10 @@ const AKGQGallery = () => {
   const openLightbox = (index: number) => {
     setPhotoIndex(index)
     setIsOpen(true)
+  }
+
+  if (error) {
+    return <Error />
   }
 
   return (
