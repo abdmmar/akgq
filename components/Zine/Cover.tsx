@@ -13,6 +13,7 @@ const Cover = () => {
       objectFit="cover"
       layout="responsive"
       alt="Covert Art of Islah 21"
+      priority={true}
     />
   )
 }

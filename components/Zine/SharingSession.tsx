@@ -150,10 +150,43 @@ const SharingCardContent = (props: SharingCardContentProps) => {
         <p>{props.author}</p>
         <H2>{props.title}</H2>
       </div>
-      <p>{props.summary}</p>
+      <div>
+        <p>{props.summary}</p>
+        <Label>
+          <p>Read More</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1rem"
+            height="1rem"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 16 16"
+            style={{
+              transform: 'rotate(215deg)',
+            }}
+          >
+            <path
+              fill="currentColor"
+              fillRule="evenodd"
+              d="m3.147 9l5 5h.707l5-5l-.707-.707L9 12.439V2H8v10.44L3.854 8.292L3.147 9z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </Label>
+      </div>
     </CardContent>
   )
 }
+
+const Label = styled.div<{ borderColor?: string }>`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  margin-top: 1rem;
+  border-radius: 50px;
+  width: fit-content;
+`
 
 const CardContainer = styled.div<{ bgColor?: string; textColor?: string; reverse?: boolean }>`
   display: grid;
@@ -164,6 +197,10 @@ const CardContainer = styled.div<{ bgColor?: string; textColor?: string; reverse
 
   @media screen and (max-width: 425px) {
     grid-template-columns: 1fr;
+  }
+
+  ${Label} {
+    border: 1px solid ${(props) => (props.bgColor ? props.textColor : props.theme.colors.midnight)};
   }
 `
 

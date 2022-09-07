@@ -30,6 +30,7 @@ const SpotifyPlaylist = () => {
           height="300"
           frameBorder="0"
           allowFullScreen
+          title="Disini Kita Berjumpa Playlist"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         ></iframe>
       </Wrapper>
