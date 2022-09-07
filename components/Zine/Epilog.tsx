@@ -49,10 +49,4 @@ const Wrapper = styled.div`
   gap: 52px;
 `
 
-const H2 = styled.h2`
-  margin-bottom: 2rem;
-  font-size: clamp(2rem, 16vw - 4rem, 4rem);
-  color: ${(props) => props.theme.colors.white};
-`
-
 export default Epilog

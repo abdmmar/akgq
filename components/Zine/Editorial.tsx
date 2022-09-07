@@ -108,7 +108,6 @@ const H2 = styled.h2`
 const Content = styled.div`
   display: flex;
   flex-direction: row;
-
   gap: 52px;
 
   @media screen and (max-width: 425px) {

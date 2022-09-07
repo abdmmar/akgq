@@ -9,6 +9,7 @@ import SemogaKitaBerjumpa from './CeritaDong'
 import SharingSession from './SharingSession'
 import ShoutOut from './ShoutOut'
 import SpotifyPlaylist from './SpotifyPlaylist'
+import KataSiKetua from './KataSiKetua'
 
 const Zine = () => {
   return (
@@ -16,6 +17,7 @@ const Zine = () => {
       <Cover />
       <Editorial />
       <SpotifyPlaylist />
+      <KataSiKetua />
       <ShoutOut />
       <BehindTheScene />
       <SemogaKitaBerjumpa />

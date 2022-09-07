@@ -24,10 +24,16 @@ const GlobalStyles = createGlobalStyle`
   input, button, textarea, select {
     font: inherit;
   }
-  p, h1, h2, h3, h4, h5, h6 {
+  p, h1, h2, h3, h4, h5, h6, figcaption {
     overflow-wrap: break-word;
     font-family: 'Inter', 'Roboto', 'Helvetica', sans-serif;
   }
+
+  figcaption {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
   #root, #__next {
     isolation: isolate;
   }
@@ -36,8 +42,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: 'Inter', 'Roboto', 'Helvetica', sans-serif;
   }
 
   a {
