@@ -5,6 +5,7 @@ import useSWR from 'swr'
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { colors } from 'styles/theme'
 import _Container from 'components/Common/Container'
+import Loading from 'components/Loading'
 
 export interface ShoutOutData {
   message: string
@@ -120,7 +121,7 @@ const ShoutOut = () => {
           <H2>Shout Out</H2>
         </Header>
         <Content>
-          {isValidating ? <p>Bentar yak, beli cilok dulu</p> : null}
+          {!shoutoutData && isValidating ? <Loading /> : null}
           {!isValidating && shoutoutData.length > 0
             ? shoutoutData.map((shoutouts, i) => {
                 return (

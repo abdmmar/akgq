@@ -7,6 +7,7 @@ import { SharingSessionData } from 'pages/api/sharing-session'
 import { Colors } from 'styles/theme.types'
 import { useWindowSize } from 'hooks/useWindowSize'
 import Error from 'components/Error'
+import Loading from 'components/Loading'
 
 const sharingSessionCardTheme = (colors: Colors, index: number) => {
   switch (index) {
@@ -31,7 +32,7 @@ const sharingSessionCardTheme = (colors: Colors, index: number) => {
 
 const SharingSession = () => {
   const theme = useTheme()
-  const { data, error } = useSWR<{ data: Array<SharingSessionData> }>(
+  const { data, error, isValidating } = useSWR<{ data: Array<SharingSessionData> }>(
     '/api/sharing-session',
     (url) => {
       return fetch(url).then((res) => res.json())
@@ -50,6 +51,7 @@ const SharingSession = () => {
   return (
     <Container>
       <Wrapper>
+        {!data && isValidating ? <Loading color="white" /> : null}
         {data?.data
           ? data.data.map((item, i) => {
               const cardTheme = sharingSessionCardTheme(theme.colors, i)

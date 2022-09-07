@@ -7,6 +7,7 @@ import useSWR from 'swr'
 import _Container from '../Common/Container'
 import Text from '../Common/Text'
 import Error from 'components/Error'
+import Loading from 'components/Loading'
 
 export interface DKBData {
   name: string
@@ -26,7 +27,7 @@ const longBreakpointColumns = {
 }
 
 const DisiniKitaBerjumpa = () => {
-  const { data, error } = useSWR<{ data: DKBList }>(
+  const { data, error, isValidating } = useSWR<{ data: DKBList }>(
     '/api/dkb',
     (url) => fetch(url).then((res) => res.json()),
     {
@@ -105,6 +106,7 @@ const DisiniKitaBerjumpa = () => {
             </CerpenContainer>
           </ContentWrapper>
           <div>
+            {!data && isValidating ? <Loading /> : null}
             {data?.data.short && (
               <Masonry
                 breakpointCols={shortBreakpointColumns}

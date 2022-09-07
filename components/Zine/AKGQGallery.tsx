@@ -9,6 +9,7 @@ import 'react-image-lightbox/style.css'
 import _Container from '../Common/Container'
 import { ImageData } from 'pages/api/gallery'
 import Error from 'components/Error'
+import Loading from 'components/Loading'
 
 const breakpointColumns = {
   default: 4,
@@ -17,7 +18,7 @@ const breakpointColumns = {
 }
 
 const AKGQGallery = () => {
-  const { data, error } = useSWR<{ data: Array<ImageData> }>(
+  const { data, error, isValidating } = useSWR<{ data: Array<ImageData> }>(
     '/api/gallery',
     (url) => fetch(url).then((res) => res.json()),
     {
@@ -46,6 +47,7 @@ const AKGQGallery = () => {
         <div>
           <H2>AKGQ Gallery</H2>
         </div>
+        {isValidating ? <Loading /> : null}
         <Masonry
           breakpointCols={breakpointColumns}
           className="gallery-grid"
