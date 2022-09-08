@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { colors } from './theme'
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -9,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body {
     height: 100%;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', 'Roboto', 'Helvetica', sans-serif;
   }
 
   body {  
@@ -23,10 +24,16 @@ const GlobalStyles = createGlobalStyle`
   input, button, textarea, select {
     font: inherit;
   }
-  p, h1, h2, h3, h4, h5, h6 {
+  p, h1, h2, h3, h4, h5, h6, figcaption {
     overflow-wrap: break-word;
-    font-family: 'IBM Plex Sans', 'Roboto', sans-serif;
+    font-family: 'Inter', 'Roboto', 'Helvetica', sans-serif;
   }
+
+  figcaption {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
   #root, #__next {
     isolation: isolate;
   }
@@ -35,8 +42,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: 'Inter', 'Roboto', 'Helvetica', sans-serif;
   }
 
   a {
@@ -52,16 +58,13 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background: white;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.5;
-    /* color: hsla(225, 15%, 17%, 1); */
-    color: #090907;
+    color: ${colors.midnight};
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.3;
   }
 
@@ -79,16 +82,38 @@ const GlobalStyles = createGlobalStyle`
   h5 {font-size: 1.25rem;}
 
   small, .text_small {font-size: 0.8rem;}
+
+  /* react-masonry-grid style */
+  .dkb-masonry-grid {
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+  }
   
-  @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
+  .dkb-masonry-grid-column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+  }
+
+  .dkb-masonry-grid-column > div {
+      margin-bottom: 2rem; /* space between items */
+      width: fit-content;
     }
-    body {
-      color: white;
-      background: #090907;
+
+  /* Optional, different gutter size on mobile */
+  @media (max-width: 800px) {
+    .dkb-masonry-grid {
+      margin-left: -15px;
+    }
+
+    .dkb-masonry-grid-column {
+      padding-left: 15px; /* gutter size offset */
+    }
+    .dkb-masonry-grid-column > div {
+      margin-bottom: 15px; /* space between items */
     }
   }
+  /* react-masonry-grid style */
 
 `
 

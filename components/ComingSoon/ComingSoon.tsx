@@ -36,7 +36,7 @@ const ComingSoon = () => {
   const size = useWindowSize()
 
   const src = React.useMemo(
-    () => (size.width && size.width <= 480 ? '/bg-mobile.png' : '/bg.png'),
+    () => (size.width && size.width <= 480 ? '/images/images/bg-mobile.png' : '/images/bg.png'),
     [size.width],
   )
 
@@ -44,7 +44,7 @@ const ComingSoon = () => {
     <div>
       <Main>
         <Image
-          src={src || '/bg.png'}
+          src={src || '/images/bg.png'}
           alt="Gallery of Islah 21 Reuni"
           layout="fill"
           objectFit="cover"
